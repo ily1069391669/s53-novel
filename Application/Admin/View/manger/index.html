@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<extend name="Index/index" />
+	<block name="page">
+		<h1>管理员列表</h1>
+
+		 <table class="table table-hover table-border">
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+             
+                <th>等级</th>               
+                <th>注册时间</th>
+                <th>操作</th>
+            </tr>
+            <volist name="list" id="v" key="k">
+            <tr>
+                <th><{$v.id}></th>
+                <td><{$v.username}></td>
+                
+                <td>
+					<if condition="$v.power eq '0'">超级管理员
+                    <elseif condition="$v.power eq '1'" />管理员
+                    <else />普通会员
+                    </if>
+                </td>
+                <td><{$v.addtime|date="Y-m-d H:i:s",###}></td>
+                <td>
+				<a href="<{:U('update',array('id'=>$v['id']))}>" class="btn btn-primary">编辑</a>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="<{:U('del',array('id'=>$v['id']))}>" class="btn btn-danger">删除</a>
+                </td>
+            </tr>
+            </volist>
+        </table>
+
+	</block>
+	<block name="content">
+
+		
+	</block>
+</body>
+</html>
