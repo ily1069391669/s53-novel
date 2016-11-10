@@ -32,23 +32,25 @@ class IndexController extends Controller {
       
         // echo M('admin_man')->getLastSql();
        
-         if (M('admin_man')->where("name='$log_name'")->find()) {
-      	  $m = M('admin_man')->where("name='$log_name'")->find();
-      	   // dump($m);
-           if($m['name'] == $log_name && $m['password'] == $_POST['password'])
-           {
-           	//设置session
-           	session('username',$m['username']);
-           	session('power',$m['power']);
-           	$this->redirect('Index/index');
-           }else {
-           $this->error('用户名密码错误....');
-        }
-           // dump($_SESSION);
-           
-        } else {
-           $this->error('用户名密码错误....');
-       }
+	     if (M('admin_man')->where("name='$log_name'")->find())
+	      {
+		      	  $m = M('admin_man')->where("name='$log_name'")->find();
+		      	   // dump($m);
+		           if($m['name'] == $log_name && $m['password'] == $_POST['password'])
+		           {
+		           	//设置session
+		           	session('username',$m['username']);
+		           	session('power',$m['power']);
+		           	$this->redirect('Index/index');
+		           }else 
+		           {
+		           $this->error('用户名密码错误....');
+		        	}
+		           // dump($_SESSION);
+	           
+	     } else {
+	           $this->error('用户名密码错误....');
+	       }
         
     }
 
