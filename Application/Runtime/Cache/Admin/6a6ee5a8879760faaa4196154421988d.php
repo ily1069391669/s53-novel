@@ -63,6 +63,7 @@
                         </div>
 
                     </li>
+
                      <li>
                         <a href="index.html#"><i class="fa fa fa-globe"></i> <span class="nav-label">管理员</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -73,31 +74,38 @@
                         </ul>
                     </li>
 
-                   
-                    <li>
-                        <a href="index.html#"><i class="fa fa fa-globe"></i> <span class="nav-label">v2.0新增</span><span class="fa arrow"></span></a>
+                        <li>
+                        <a href="index.html#"><i class="fa fa-sitemap"></i> <span class="nav-label">小说管理 </span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="toastr_notifications.html">Toastr通知</a>
+                            <li>
+                                <a href="index.html#">小说分类 <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="<?php echo U('Type/index');?>">分类列表</a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo U('Type/insert');?>">添加分类</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li><a href="nestable_list.html">嵌套列表</a>
+
+                           <li>
+                                <a href="index.html#">小说库 <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="index.html#">小说列表</a>
+                                    </li>
+                                    <li>
+                                        <a href="index.html#">添加小说</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li><a href="timeline_v2.html">时间轴</a>
-                            </li>
-                            <li><a href="forum_main.html">论坛</a>
-                            </li>
-                            <li><a href="code_editor.html">代码编辑器</a>
-                            </li>
-                            <li><a href="modal_window.html">模态窗口</a>
-                            </li>
-                            <li><a href="validation.html">表单验证</a>
-                            </li>
-                            <li><a href="tree_view_v2.html">树形视图</a>
-                            </li>
-                            <li><a href="chat_view.html">聊天窗口</a>
-                            </li>
+
                         </ul>
                     </li>
 
+                   
+                
                     <li>
                         <a href="index.html#"><i class="fa fa-edit"></i> <span class="nav-label">表单</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -139,29 +147,9 @@
                         </ul>
                     </li>
                 
-                    <li>
-                        <a href="index.html#"><i class="fa fa-table"></i> <span class="nav-label">表格</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="table_basic.html">基本表格</a>
-                            </li>
-                            <li><a href="table_data_tables.html">数据表格(DataTables)</a>
-                            </li>
-                            <li><a href="table_jqgrid.html">jqGrid</a>
-                            </li>
-                        </ul>
-                    </li>
+                  
 
-                     <li>
-                        <a href="index.html#"><i class="fa fa-table"></i> <span class="nav-label">表格</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="table_basic.html">基本表格</a>
-                            </li>
-                            <li><a href="table_data_tables.html">数据表格(DataTables)</a>
-                            </li>
-                            <li><a href="table_jqgrid.html">jqGrid</a>
-                            </li>
-                        </ul>
-                    </li>
+                    
                   
                     <li>
                         <a href="index.html#"><i class="fa fa-sitemap"></i> <span class="nav-label">菜单 </span><span class="fa arrow"></span></a>

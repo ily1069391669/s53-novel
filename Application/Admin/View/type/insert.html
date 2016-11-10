@@ -1,0 +1,210 @@
+<extend name="Index/index" />
+
+<block name="page">
+ <div class="row">           
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>添加小说分类</h5>
+                    
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm" action="<{:U('Manger/add')}>" method="post">
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">父类别：</label>
+                            <div class="col-sm-8">
+                               <select name="" id="big" onchange="run()">
+								<!-- <option value="1">上海</option>
+								<option value="1">浙江</option>
+							 --></select>
+								
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">类别：</label>
+                            <div class="col-sm-8">
+                               <select name="" id="small" onchange="run1()">
+									<!-- <option value="1">静安区</option>
+									<option value="1">杭州</option> -->
+								</select>
+                            </div>
+                        </div>
+                    
+                   
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-primary" type="submit">添加</button>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                 <button class="btn btn-primary" type="reset">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+        <script type="text/javascript">
+				var big =document.getElementById('big');
+				var small =document.getElementById('small');
+				var ssmall =document.getElementById('ssmall');
+
+				var pr = <{$f_id}> ;
+				var city =[
+				['闸北区','浦东新区'],
+				['福州','厦门']
+				];
+				var cun=[
+				[['兄弟连','彭浦新村'],['宝尊','人民广场']],
+				[['闽头','小福州'],['鼓楼','小虾米']]
+				];
+
+				for(var i=0;i<pr.length;i++){
+					big.add(new Option(pr[i],i));
+
+				}
+				run();
+				function run(){
+					small.length=0;
+					var num=big.value;
+					var arr=city[num];
+					for(var i=0;i<arr.length;i++){
+					small.add(new Option(arr[i],i));
+
+				}
+				run1();
+
+				}
+				run1();
+				function run1(){
+					ssmall.length=0;
+					var num1=big.value;
+					var num2=small.value;
+					// var arr=city[num];
+					var arr1 =cun[num1][num2];
+					// alert(arr1);
+					for(var i=0;i<arr1.length;i++){
+					ssmall.add(new Option(arr1[i],i));
+				}
+
+				}
+
+
+
+</script>
+         <!-- Mainly scripts -->
+    <script src="__PUBLIC__/Admin/js/jquery-2.1.1.min.js"></script>
+    <script src="__PUBLIC__/Admin/js/bootstrap.min.js?v=3.4.0"></script>
+    <script src="__PUBLIC__/Admin/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="__PUBLIC__/Admin/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="__PUBLIC__/Admin/js/hplus.js?v=2.2.0"></script>
+    <script src="__PUBLIC__/Admin/js/plugins/pace/pace.min.js"></script>
+
+    <!-- jQuery Validation plugin javascript-->
+    <script src="__PUBLIC__/Admin/js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="__PUBLIC__/Admin/js/plugins/validate/messages_zh.min.js"></script>
+    <script>
+        //以下为修改jQuery Validation插件兼容Bootstrap的方法，没有直接写在插件中是为了便于插件升级
+        $.validator.setDefaults({
+            highlight: function (element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            success: function (element) {
+                element.closest('.form-group').removeClass('has-error').addClass('has-success');
+            },
+            errorElement: "span",
+            errorClass: "help-block m-b-none",
+            validClass: "help-block m-b-none"
+
+
+        });
+
+         //以下为官方示例
+        $().ready(function () {
+            // validate the comment form when it is submitted
+            $("#commentForm").validate();
+
+            // validate signup form on keyup and submit
+            $("#signupForm").validate({
+                rules: {
+                    addtime: "required",
+                    firstname: "required",
+                    lastname: "required",
+                    name: {
+                        required: true,
+                        minlength: 2
+                    },
+                    username: {
+                        required: true,
+                        minlength: 2
+                    },
+                    password: {
+                        required: true,
+                        minlength: 5
+                    },
+                    confirm_password: {
+                        required: true,
+                        minlength: 5,
+                        equalTo: "#password"
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    topic: {
+                        required: "#newsletter:checked",
+                        minlength: 2
+                    },
+                    agree: "required"
+                },
+                messages: {
+                    addtime: "",
+                    firstname: "请输入你的姓",
+                    lastname: "请输入您的名字",
+                    username: {
+                        required: "请输入您的昵称",
+                        minlength: "用户名必须两个字符以上"
+                    },
+                    name: {
+                        required: "请输入您的用户名",
+                        minlength: "用户名必须两个字符以上"
+                    },
+                    password: {
+                        required: "请输入您的密码",
+                        minlength: "密码必须5个字符以上"
+                    },
+                    confirm_password: {
+                        required: "请再次输入密码",
+                        minlength: "密码必须5个字符以上",
+                        equalTo: "两次输入的密码不一致"
+                    },
+                    email: "请输入您的E-mail",
+                    agree: "必须同意协议后才能注册"
+                }
+            });
+
+            // propose username by combining first- and lastname
+            $("#username").focus(function () {
+                var firstname = $("#firstname").val();
+                var lastname = $("#lastname").val();
+                if (firstname && lastname && !this.value) {
+                    this.value = firstname + "." + lastname;
+                }
+            });
+        });
+    </script>
+
+    <script type="text/javascript" src="__PUBLIC__/Admin/http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script><!--统计代码，可删除-->
+</block>
+<block name="js">
+   
+</block>
+</body>
+
+</html>

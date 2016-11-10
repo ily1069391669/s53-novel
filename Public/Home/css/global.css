@@ -1,0 +1,71 @@
+﻿@charset "utf-8";
+@import url(ie6png_hack.css);   /* 引入IE6的png图片显示 hack文件 */
+html {}
+html,img,fieldset {border:0;}
+html,body,form {margin:0;padding:0;}
+body {color:#333;background-color:#fff;}
+body,td {line-height:normal;font-size:12px;font-family:"Microsoft YaHei","SimSun",Arial, Helvetica, sans-serif;/* SimSun 英文版 宋体 支持英文字母数字； microsoft YaHei 英文版 微软雅黑； */  }
+*html body {background-image:url(about:blank);background-attachment:fixed; } /* IE6 fixed box hack */
+
+h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
+ul,ol,dl,dt,dd,p {margin:0;padding:0;}
+ol, ul {list-style: none}
+a,a:link {color:#333;text-decoration:none;}
+a:active {}
+a:hover {color:#cc2931;}
+a:visited{}
+
+/* 浮动元素 */
+.cf:before,.cf:after{content:'';display:table}
+.cf:after{clear:both}
+.cf{*zoom:1}
+.rectbox:after {content:".";display:block;height:0;clear:both;visibility:hidden;}
+.rectbox {clear:both;*display:inline-block;}
+.rectbox .left {float:left;_display:inline;}
+.rectbox .right {float:right;_display:inline;}
+
+
+/* Form 元素统一 */
+input{margin:0; padding:0;}
+textare {overflow-y:visible;margin:0; padding:0;}
+label {cursor:pointer;_cursor:default;}
+input[type="submit"] {cursor:pointer;}
+input[type="button"] {cursor:pointer;}
+input[type="reset"]  {cursor:pointer;}
+input.submit     {cursor:pointer;}
+input.button     {cursor:pointer;}
+input.reset      {cursor:pointer;}
+input.disabled   {cursor:default;}
+input[disabled]  {}
+input.readonly   {color:#999;border:1px solid #ccc;background:#f3f3f3;}
+input[readOnly]   {color:#999;border:1px solid #ccc;background:#f3f3f3;}
+*html input {
+direction:expression(function(sjd){
+
+sjd.style.direction = "ltr";                                     /* 只 执行一次*/
+sjd.className += " "+sjd.type;                            /* 根据type 类型 添加 className，弥补IE6 无法使用 [type=""] 改用 input.type */
+
+}(this));
+unicode-bidi:expression(function(sjd){
+
+/* input  只读时 ie6 添加 className " readonly" */
+if(sjd.readOnly == true) {
+	if(sjd.className.search(" readonly")==-1){sjd.className += " readonly";}
+} 
+else {if(sjd.className.search(" readonly")!=-1){sjd.className = sjd.className.replace(" readonly","")}
+} 
+/* input被禁用时 ie6 添加 className " disabled" */
+if(sjd.disabled == true) {
+	if(sjd.className.search(" disabled")==-1){sjd.className += " disabled";}
+}
+else {if(sjd.className.search(" disabled")!=-1){sjd.className = sjd.className.replace(" disabled","")}
+} 
+
+}(this));
+}
+
+/* IE6 背景图缓存优化  IE6 fixed box hack */
+*html html {zoom:expression(function(el){
+el.style.zoom = "1";
+try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {}
+}(this))}

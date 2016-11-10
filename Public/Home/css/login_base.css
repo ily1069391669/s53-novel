@@ -1,0 +1,28 @@
+﻿@charset "utf-8";
+.header{}
+.redfont{ color:#cc2931;}
+.header_inner{ width:1160px; margin:0 auto; padding-top:25px; margin-bottom:40px;}
+.logo{}
+.logo h1{background:url(/images/logo.png) no-repeat; width:131px; height:50px; display:inline-block; vertical-align:middle; margin-right:15px; float:left;}
+*html .logo .logo_img{zoom:expression( function(sjd){sjd.style.zoom=1;if (sjd.className.search(" ie6bg")==-1){sjd.className += " ie6bg"}}(this));}
+.logo h1 a{ display:block; height:50px; overflow:hidden; text-indent:-9999px;}
+.logo h2{ width:98px; height:50px;display:inline-block; vertical-align:middle; border-left:1px solid #e5e5e5; padding-left:10px; }
+.logo h2 strong{ display:block; font-size:16px; color:#666; font-weight:normal; letter-spacing:1px; padding-top:5px;}
+.logo h2 i{display:block; font-size:12px; color:#999; font-weight:normal; font-style:normal;}
+.login_ui_icon{ background:url(/images/login_icon.png);}
+.tips_icon{ background:url(/images/tips_icon.png) no-repeat;}
+.content{}
+.content .content_inner{width:1160px; padding-top:20px; margin:0 auto; position:relative; min-height:540px; height:100%; _height:540px;}
+/*输入框文字颜色*/
+input.gray_txt{color:#b2b2b2;}
+input.text_input_focus{color:#333;}
+input.text_change{color:#333;}
+
+/*底部版权*/
+#footer{ background:#fff; border-top:1px solid #d9d9d9;}
+#footer .foot p{ margin:0; padding:0;}
+#footer .foot{ width:1200px; margin:0 auto; text-align:center;}
+#footer .foot .alink{ font-size:14px; padding:30px 0 10px 0;}
+#footer .foot .alink a{ margin-right:15px; color:#666;}
+#footer .foot .alink a:hover{ margin-right:15px; color:#cc2931;}
+#footer .foot .copy_right{ line-height:24px; color:#999; font-size:12px; margin-bottom:40px;}

@@ -1,0 +1,188 @@
+﻿@charset "utf-8";
+/*
+FileName: ie6png_hack.css 
+runtimeStyle 修改css文件中的
+currentStyle 取当前css文件中的
+
+	------ PNG图 ---------------
+	----------------------------
+	背景
+	*html .className {zoom:expression( function(sjd){sjd.style.zoom=1;if (sjd.className.search(" ie6bg")==-1){sjd.className += " ie6bg"}}(this));}
+	前景
+	*html .className img {zoom:expression( function(sjd){sjd.style.zoom=1;if (sjd.className.search(" ie6img")==-1){sjd.className += " ie6img"}}(this));}
+	
+
+ */
+*html a.ie6bg {cursor:pointer;}
+*html .ie6bg .png_bg {position:absolute;z-index:1;clear:both;display:inline-block;overflow:hidden;left:0;top:0;width:100%;}
+*html .ie6bg .png_bg .bgfilter {display:block;width:3000px;height:3000px;}
+*html .ie6bg .png_ele {position:relative;z-index:2;clear:both;}
+
+*html .png_input {position:relative;display:inline-block;overflow:hidden;zoom:expression(function(sjd){
+	if(sjd.getElementsByTagName('input')[0].style.display=="none"){sjd.style.display="none"} else {sjd.style.display="inline-block"}
+}(this))}
+*html .png_input .bgfilter {position:absolute;left:0;top:0;z-index:2;display:block;overflow:hidden;width:2000px;height:2000px;}
+
+/* IE6.0 PNG 背景图 */
+*html .ie6bg {
+	behavior:expression( function(sjd){
+			if(document.readyState=="complete"){
+				if (sjd.currentStyle.backgroundImage.indexOf(".png")>0){
+					if(sjd.offsetWidth!="0" && sjd.offsetHeight!="0") {
+					
+						/*获取 PNG图片 信息 */
+						sjd.setAttribute("oldbg",sjd.currentStyle.backgroundImage.replace('url("', '').replace('")', ''));
+						sjd.setAttribute("method",(sjd.currentStyle.backgroundRepeat=="repeat" || sjd.currentStyle.backgroundRepeat=="repeat-x" || sjd.currentStyle.backgroundRepeat=="repeat-y")?"scale":"crop");
+						sjd.setAttribute("bgX",sjd.currentStyle.backgroundPositionX);if(isNaN(sjd.bgX.replace("px","")) || sjd.bgX == "0px" || sjd.method == "scale"){sjd.bgX = 0};
+						sjd.setAttribute("bgY",sjd.currentStyle.backgroundPositionY);if(isNaN(sjd.bgY.replace("px","")) || sjd.bgY == "0px" || sjd.method == "scale"){sjd.bgY = 0};
+						var obj_tagName = sjd.tagName.toLocaleLowerCase();
+						/* 样式修正 */
+						if (sjd.currentStyle.position != "absolute"){sjd.style.position="relative"}
+						if ( (sjd.currentStyle.display != "block" && sjd.currentStyle.display != "none") && sjd.currentStyle.styleFloat == "none"){sjd.style.display = "inline-block"}
+						
+						var old_padding = sjd.currentStyle.padding;
+						/*选择 hack 方式*/
+						switch(obj_tagName){   
+							case  "table":
+								alert("<"+obj_tagName+ " class='"+sjd.className+"'></"+obj_tagName+"> 不支持png hack");
+								break;
+							case  "tr":
+								alert("<"+obj_tagName+ " class='"+sjd.className+"'></"+obj_tagName+"> 不支持png hack");
+								break;
+							case  "td":
+								alert("<"+obj_tagName+ " class='"+sjd.className+"'></"+obj_tagName+"> 不支持png hack");
+								break;
+							case  "input":
+								var input_margin = sjd.currentStyle.margin;
+								sjd.style.padding = old_padding; sjd.style.clear = "both";sjd.style.zIndex="3";sjd.style.background ="none";sjd.style.margin ="0";sjd.className = sjd.className.replace(" ie6bg","")
+								var input_html = sjd.outerHTML;
+								sjd.outerHTML='<span class="png_input" style="width:'+sjd.offsetWidth+'px;height:'+sjd.offsetHeight+'px;margin:'+input_margin+' "><span class="bgfilter" style="margin: '+sjd.bgY+' 0 0 '+sjd.bgX+';filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod='+sjd.method+', src='+sjd.oldbg+')"></span>'+input_html+'</span>';
+								break;
+							case  "a":
+								sjd.onmouseover=function(){
+									this.style.cssText = this.style.cssText.replace("BACKGROUND-IMAGE: none","").replace("TEXT-INDENT: 0px","");
+								}
+								sjd.onmouseout=function(){
+									var bgfilter = this.firstChild.firstChild;
+									bgfilter.style.marginLeft = this.bgX;
+									bgfilter.style.marginTop = this.bgY;
+									bgfilter.style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled="true", sizingMethod="'+this.method+'", src="'+this.oldbg+'")';
+								}
+								
+							default:
+								if( obj_tagName !="a" && ( (sjd.bgX==0 && sjd.bgY==0 ) && ( sjd.childNodes.length==0 || (sjd.childNodes.length==1 && sjd.childNodes[0].nodeName == "#text")) )){
+									sjd.style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled="true", sizingMethod="'+sjd.method+'", src="'+sjd.oldbg+'")';
+								}else {
+									/* 样式修正 */
+									if (  (sjd.currentStyle.width !="auto" && sjd.currentStyle.width !="100%" && sjd.offsetWidth!=0) || sjd.currentStyle.display != "block" ){sjd.style.width=sjd.offsetWidth + "px"; }
+									sjd.style.padding=0;
+									if(sjd.offsetHeight !=0){sjd.style.height=sjd.offsetHeight + "px"}									
+									/*创建 hack标签*/
+									
+										/* 设定 标签 name */
+										if(obj_tagName=="div") {var sjdtagname = "div"} else {var sjdtagname = "span"}
+
+										/*检查 hack标签 */
+										var list = sjd.getElementsByTagName(sjdtagname);
+										
+										if(list.length ==0 || (list[0] && list[0].className!="png_bg")){
+											/*创建*/
+											var png_bg = document.createElement(sjdtagname);
+											var png_ele = document.createElement(sjdtagname);
+											var bgfilter = document.createElement(sjdtagname);
+											png_bg.className ="png_bg";png_ele.className = "png_ele";bgfilter.className = "bgfilter";
+											if(sjd.childNodes.length==1 && sjd.childNodes[0].nodeType ==1){
+												var png_ele = sjd.childNodes[0];
+												if (png_ele.currentStyle.position != "absolute"){
+													sjd.childNodes[0].className +=" png_ele";
+													png_ele.style.top = png_ele.currentStyle.marginTop;png_ele.style.marginTop = 0;
+													png_ele.style.left = png_ele.currentStyle.marginLeft;png_ele.style.marginLeft = 0;
+												}else if(png_ele.style.zIndex <2){png_ele.style.zIndex = 2;}
+												sjd.insertBefore(png_bg,png_ele); png_bg.appendChild(bgfilter);
+											}else{
+												/*插入html*/
+												var sjdhtml = sjd.innerHTML; sjd.innerHTML = "";
+												sjd.appendChild(png_bg);png_bg.appendChild(bgfilter);sjd.appendChild(png_ele);
+												if (sjdhtml != null){
+													png_ele.innerHTML = sjdhtml;
+													var iframes = png_ele.getElementsByTagName("iframe");
+													for (i=0;i<iframes.length;i++){
+														iframes[i].src = iframes[i].src ;
+													}
+												}
+												/*设定 png_ele 的 style */
+												png_ele.style.display = "block";
+												png_ele.style.padding = old_padding; png_ele.style.height = sjd.offsetHeight ;
+											}
+
+											
+
+											/*设定 png_bg 的 style */
+											if(sjd.offsetHeight !=0){png_bg.style.height=sjd.offsetHeight + "px"}else {png_bg.style.height=sjd.currentStyle.height;}
+
+											/* 设定 png显示 */
+											if(sjd.method=="scale"){bgfilter.style.width="100%";bgfilter.style.height=sjd.currentStyle.height;}
+											bgfilter.style.marginLeft = sjd.bgX;
+											bgfilter.style.marginTop = sjd.bgY;
+											bgfilter.style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled="true", sizingMethod="'+sjd.method+'", src="'+sjd.oldbg+'")';
+										}
+								}
+								break;
+						}
+					
+						/* 删除png背景图 */
+						sjd.style.backgroundImage ="none";
+						/* 停止 expression 执行 */
+						sjd.style.behavior="1";
+					}
+				}else {sjd.style.behavior="1";}
+			}
+		}(this)
+		);
+}
+*html a.ie6bg:hover {
+	filter:expression( function(sjd){
+
+		if (sjd.currentStyle.backgroundImage.indexOf(".png")>0){
+				/*获取 PNG图片 信息 */
+				sjd.setAttribute("oldbg1",sjd.currentStyle.backgroundImage.replace('url("', '').replace('")', ''));
+				sjd.setAttribute("method1",(sjd.currentStyle.backgroundRepeat=="repeat" || sjd.currentStyle.backgroundRepeat=="repeat-x" || sjd.currentStyle.backgroundRepeat=="repeat-y")?"scale":"crop");
+				sjd.setAttribute("bgX1",sjd.currentStyle.backgroundPositionX);if(isNaN(sjd.bgX1.replace("px","")) || sjd.bgX1 == "0px" || sjd.method1 == "scale"){sjd.bgX = 0};
+				sjd.setAttribute("bgY1",sjd.currentStyle.backgroundPositionY);if(isNaN(sjd.bgY1.replace("px","")) || sjd.bgY1 == "0px" || sjd.method1 == "scale"){sjd.bgY = 0};
+				var bgfilter = sjd.firstChild.firstChild;
+					bgfilter.style.margin = 0;bgfilter.style.padding = 0;
+				if(sjd.method1=="scale"){bgfilter.style.width=sjd.offsetWidth+"px";bgfilter.style.height=sjd.offsetHeight+"px";}
+				bgfilter.style.marginLeft = sjd.bgX1;
+				bgfilter.style.marginTop = sjd.bgY1;
+				if( sjd.oldbg1 != sjd.oldbg){
+				bgfilter.style.filter='progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled="true", sizingMethod="'+sjd.method1+'", src="'+sjd.oldbg1+'")';
+				}
+				sjd.style.backgroundImage="none";
+		}
+	}(this));
+}
+/**/
+
+/* IE6.0 PNG 前景图*/
+*html .ie6img {
+	behavior:expression( function(sjd){
+		var imgsrc = sjd.src.toLowerCase();
+		if (sjd.complete){
+				if(imgsrc.indexOf(".png") > 0){
+				sjd.runtimeStyle.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='" + sjd.src.replace('%23', '%2523').replace("'", "%27") + "', sizingMethod='image')";
+				var width = sjd.offsetWidth;var height = sjd.offsetHeight;
+				var url = imgsrc.substr(0,imgsrc.lastIndexOf("images/"));
+				if (url.search(window.location.hostname)==-1){url="http://"+window.location.hostname+"/images/csspng_ie6/blank.gif"}
+				else {url = url+"images/csspng_ie6/blank.gif"}
+				sjd.src = url;	sjd.width = width;sjd.height = height;
+
+				sjd.style.behavior="";
+			}else {sjd.style.behavior="1";}
+		}
+	}(this)
+	);}
+
+
+
+
+
