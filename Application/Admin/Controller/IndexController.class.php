@@ -43,7 +43,8 @@ class IndexController extends Controller {
            	$this->redirect('Index/index');
            }else {
            $this->error('用户名密码错误....');
-        }
+        }else {
+           $this->error('用户名密码错误....');
            // dump($_SESSION);
            
         } 
