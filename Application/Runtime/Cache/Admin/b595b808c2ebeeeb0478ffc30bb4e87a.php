@@ -93,10 +93,10 @@
                                 <a href="index.html#">小说库 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="index.html#">小说列表</a>
+                                        <a href="<?php echo U('Novel/index');?>">小说列表</a>
                                     </li>
                                     <li>
-                                        <a href="index.html#">添加小说</a>
+                                        <a href="<?php echo U('Novel/insert');?>">添加小说</a>
                                     </li>
                                 </ul>
                             </li>

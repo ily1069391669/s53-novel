@@ -1,4 +1,6 @@
-﻿<!DOCTYPE HTML>
+﻿
+<block name="head">
+<!DOCTYPE HTML>
 <!--STATUS OK-->
 <html class="expanded">
 <head>
@@ -115,8 +117,8 @@ d.set('recommend', '[{\x22title\x22:\x22\\u70ed\\u95e8\\u63a8\\u8350\x22,\x22rec
 <div class="read-nav-wp">
 <div class="read-nav-inner wrap-page-width">
 <ul class="read-nav clearfix">
-<li class="nav-li-index"><a class="nav-index" href=""><span>首页</span></a><span class="nav-border"></span></li>
-<li class="nav-li-category"><a class="nav-category" href="book/list/0?fr=indextop"><span>分类</span></a><span class="nav-border"></span></li>
+<li class="nav-li-index"><a class="nav-index" href="<{:U('index/index')}>"><span>首页</span></a><span class="nav-border"></span></li>
+<li class="nav-li-category"><a class="nav-category" href="<{:U('type/index')}>"><span>分类</span></a><span class="nav-border"></span></li>
 <li class="nav-li-rank"><a class="nav-rank" href="rank/newbook"><span>榜单</span></a><span class="nav-border"></span></li>
 </ul>
 </div>
@@ -127,6 +129,8 @@ d.set('recommend', '[{\x22title\x22:\x22\\u70ed\\u95e8\\u63a8\\u8350\x22,\x22rec
 </div>
 
 </div>
+</div>
+
 <div id="bd" class="bd">
 
 <div class="bd-wrap">
@@ -135,7 +139,8 @@ d.set('recommend', '[{\x22title\x22:\x22\\u70ed\\u95e8\\u63a8\\u8350\x22,\x22rec
 <div class="aside">
 </div>
 
-
+</block>
+<block name="main">
 <div class="main">
 
 <div class="mod yd-top-zone">
@@ -1433,6 +1438,7 @@ d.set('recommend', '[{\x22title\x22:\x22\\u70ed\\u95e8\\u63a8\\u8350\x22,\x22rec
 </div>
 
 </div>
+</block>
 <div id="ft">
 
 

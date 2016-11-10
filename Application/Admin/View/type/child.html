@@ -1,0 +1,31 @@
+
+	<extend name="Index/index" />
+	<block name="page">
+		<span style="font-size: 28px">商品分类列表 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><a onclick="history.back();" class="" style="font-size: 13px" class="btn">返回上一级</a>
+        
+		 <table class="table table-hover table-border">
+            <tr>
+                <th>ID</th>                            
+                <th>图书类型</th>
+                <th>操作</th>
+            </tr>
+            <volist name="list" id="v" key="k">
+            <tr>
+                <th><{$v.id}></th>
+                <td><{$v.type}></td>
+                <td>
+                <a href="<{:U('child',array('id'=>$v['id']))}>" class="btn btn-primary">查看子分类</a>
+			
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="<{:U('del',array('id'=>$v['id']))}>" class="btn btn-danger">删除</a>
+
+                </td>
+            </tr>
+            </volist>
+        </table>
+
+	</block>
+	<block name="content">
+
+		
+	</block>

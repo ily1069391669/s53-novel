@@ -93,10 +93,10 @@
                                 <a href="index.html#">小说库 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="index.html#">小说列表</a>
+                                        <a href="<?php echo U('Novel/index');?>">小说列表</a>
                                     </li>
                                     <li>
-                                        <a href="index.html#">添加小说</a>
+                                        <a href="<?php echo U('Novel/insert');?>">添加小说</a>
                                     </li>
                                 </ul>
                             </li>
@@ -296,28 +296,29 @@
                     
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal m-t" id="signupForm" action="<?php echo U('Manger/add');?>" method="post">
+                    <form class="form-horizontal m-t" id="signupForm" action="<?php echo U('Type/add');?>" method="post">
 
                         <div class="form-group">
                             <label class="col-sm-3 control-label">父类别：</label>
                             <div class="col-sm-8">
-                               <select name="" id="big" onchange="run()">
-								<!-- <option value="1">上海</option>
-								<option value="1">浙江</option>
-							 --></select>
+                               <select name="pid" >                              
+                                <option value="0">顶级分类</option>
+								<?php if(is_array($arr)): $i = 0; $__LIST__ = $arr;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><option value="<?php echo ($v["id"]); ?>"><?php echo ($v["type"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+							 </select>
 								
                             </div>
                         </div>
 
-                        <div class="form-group">
+                         <div class="form-group">
                             <label class="col-sm-3 control-label">类别：</label>
                             <div class="col-sm-8">
-                               <select name="" id="small" onchange="run1()">
-									<!-- <option value="1">静安区</option>
-									<option value="1">杭州</option> -->
-								</select>
+                            <input type="text" name="type">
+                             </select>
+                                
                             </div>
                         </div>
+                             
+                    
                     
                    
                         <div class="form-group">
@@ -335,54 +336,7 @@
     </div>
 
         </div>
-        <script type="text/javascript">
-				var big =document.getElementById('big');
-				var small =document.getElementById('small');
-				var ssmall =document.getElementById('ssmall');
 
-				var pr =['上海','福建'];
-				var city =[
-				['闸北区','浦东新区'],
-				['福州','厦门']
-				];
-				var cun=[
-				[['兄弟连','彭浦新村'],['宝尊','人民广场']],
-				[['闽头','小福州'],['鼓楼','小虾米']]
-				];
-
-				for(var i=0;i<pr.length;i++){
-					big.add(new Option(pr[i],i));
-
-				}
-				run();
-				function run(){
-					small.length=0;
-					var num=big.value;
-					var arr=city[num];
-					for(var i=0;i<arr.length;i++){
-					small.add(new Option(arr[i],i));
-
-				}
-				run1();
-
-				}
-				run1();
-				function run1(){
-					ssmall.length=0;
-					var num1=big.value;
-					var num2=small.value;
-					// var arr=city[num];
-					var arr1 =cun[num1][num2];
-					// alert(arr1);
-					for(var i=0;i<arr1.length;i++){
-					ssmall.add(new Option(arr1[i],i));
-				}
-
-				}
-
-
-
-</script>
          <!-- Mainly scripts -->
     <script src="/novel/Public/Admin/js/jquery-2.1.1.min.js"></script>
     <script src="/novel/Public/Admin/js/bootstrap.min.js?v=3.4.0"></script>
@@ -420,6 +374,7 @@
             // validate signup form on keyup and submit
             $("#signupForm").validate({
                 rules: {
+                    pid: "required",
                     addtime: "required",
                     firstname: "required",
                     lastname: "required",

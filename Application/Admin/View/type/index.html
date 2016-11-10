@@ -14,7 +14,8 @@
                 <th><{$v.id}></th>
                 <td><{$v.type}></td>
                 <td>
-				<a href="<{:U('update',array('id'=>$v['id']))}>" class="btn btn-primary">编辑</a>
+                <a href="<{:U('child',array('id'=>$v['id']))}>" class="btn btn-primary">查看子分类</a>
+			
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="<{:U('del',array('id'=>$v['id']))}>" class="btn btn-danger">删除</a>
                 </td>
