@@ -6,14 +6,17 @@ class IndexController extends Controller {
     	// dump($_SESSION);
     	// 
     	
-        if (session(USERNAME)) {
-            $this->redirect(U('Index/index'));
+        if (session('username') !== null ) {
+
+        	
+    		// dump($_SESSION);
+      
+             $this->display();
+
         } else {
             $this->redirect('Index/login');
         }
-
-    
-        $this->display();
+    	
     }
 
     public function do_login()
@@ -31,15 +34,27 @@ class IndexController extends Controller {
        
          if (M('admin_man')->where("name='$log_name'")->find()) {
       	  $m = M('admin_man')->where("name='$log_name'")->find();
-      	   dump($m);
+      	   // dump($m);
            if($m['name'] == $log_name && $m['password'] == $_POST['password'])
            {
            	//设置session
-           }
-
-        } else {
-           $this->error('添加失败....');
+           	session('username',$m['username']);
+           	session('power',$m['power']);
+           	$this->redirect('Index/index');
+           }else {
+           $this->error('用户名密码错误....');
         }
+           // dump($_SESSION);
+           
+        } 
         
     }
+
+      public function log_out()
+      {
+      		session('username',null);
+      		dump($_SESSION);
+      		$this->redirect('Index/index');
+      }
+
 }

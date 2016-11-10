@@ -37,8 +37,12 @@
                             <img alt="image" class="img-circle" src="/novel/Public/Admin/img/profile_small.jpg" />
                              </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Beaut-zihan</strong>
-                             </span> <span class="text-muted text-xs block">超级管理员 <b class="caret"></b></span> </span>
+                                <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo ($_SESSION['username']); ?></strong>
+                             </span> <span class="text-muted text-xs block">
+                                <?php if($admin["power"] == '0'): ?>超级管理员
+                                <?php elseif($admin["power"] == '1'): ?> 管理员
+                                <?php else: ?>普通会员<?php endif; ?>
+                             <b class="caret"></b></span> </span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a href="form_avatar.html">修改头像</a>
@@ -50,7 +54,7 @@
                                 <li><a href="mailbox.html">信箱</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="login.html">安全退出</a>
+                                <li><a href="<?php echo U('Index/log_out');?>">安全退出</a>
                                 </li>
                             </ul>
                         </div>
@@ -286,7 +290,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="login.html">
+                            <a href="<?php echo U('Index/log_out');?>">
                                 <i class="fa fa-sign-out"></i> 退出
                             </a>
                         </li>
