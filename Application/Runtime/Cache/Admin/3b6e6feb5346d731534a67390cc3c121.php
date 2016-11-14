@@ -93,10 +93,10 @@
                                 <a href="index.html#">小说库 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="<?php echo U('Novel/index');?>">小说列表</a>
+                                        <a href="index.html#">小说列表</a>
                                     </li>
                                     <li>
-                                        <a href="<?php echo U('Novel/insert');?>">添加小说</a>
+                                        <a href="index.html#">添加小说</a>
                                     </li>
                                 </ul>
                             </li>
@@ -300,8 +300,7 @@
                 <th><?php echo ($v["id"]); ?></th>
                 <td><?php echo ($v["type"]); ?></td>
                 <td>
-                <a href="<?php echo U('child',array('id'=>$v['id']));?>" class="btn btn-primary">查看子分类</a>
-			
+				<a href="<?php echo U('update',array('id'=>$v['id']));?>" class="btn btn-primary">编辑</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="<?php echo U('del',array('id'=>$v['id']));?>" class="btn btn-danger">删除</a>
                 </td>

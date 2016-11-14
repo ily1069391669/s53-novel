@@ -10,11 +10,11 @@
     <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
-    <link href="/novel/Public/Admin/css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
-    <link href="/novel/Public/Admin/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet">
+    <link href="/zyjbook/Public/Admin/css/bootstrap.min.css?v=3.4.0" rel="stylesheet">
+    <link href="/zyjbook/Public/Admin/font-awesome/css/font-awesome.css?v=4.3.0" rel="stylesheet">
 
-    <link href="/novel/Public/Admin/css/animate.css" rel="stylesheet">
-    <link href="/novel/Public/Admin/css/style.css?v=2.2.0" rel="stylesheet">
+    <link href="/zyjbook/Public/Admin/css/animate.css" rel="stylesheet">
+    <link href="/zyjbook/Public/Admin/css/style.css?v=2.2.0" rel="stylesheet">
 
 </head>
 
@@ -42,10 +42,10 @@
     </div>
 
     <!-- Mainly scripts -->
-    <script src="/novel/Public/Admin/js/jquery-2.1.1.min.js"></script>
-    <script src="/novel/Public/Admin/js/bootstrap.min.js?v=3.4.0"></script>
+    <script src="/zyjbook/Public/Admin/js/jquery-2.1.1.min.js"></script>
+    <script src="/zyjbook/Public/Admin/js/bootstrap.min.js?v=3.4.0"></script>
 
-    <script type="text/javascript" src="/novel/Public/Admin/http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script><!--统计代码，可删除-->
+    <script type="text/javascript" src="/zyjbook/Public/Admin/http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script><!--统计代码，可删除-->
 
 </body>
 

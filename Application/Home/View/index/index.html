@@ -1,6 +1,4 @@
-﻿
-<block name="head">
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <!--STATUS OK-->
 <html class="expanded">
 <head>
@@ -108,7 +106,8 @@ d.set('recommend', '[{\x22title\x22:\x22\\u70ed\\u95e8\\u63a8\\u8350\x22,\x22rec
 </div>
 <div class="read-userbar-wp">
 <ul class="read-userbar clearfix read-user-unlogin">
-<li class="ub-li ub-li-login"><span class="ub-border"></span><a href="javascript:void(0);" class="ub-item ub-login" id="newLoginBtn"><span class="ub-txt">登录</span></a></li>
+<li class="ub-li ub-li-login"><span class="ub-border"></span><a href="Home/Login" class="ub-item ub-login" id="newLoginBtn1"><span class="ub-txt">登录</span></a></li>
+<li class="ub-li ub-li-login"><span class="ub-border"></span><a href="Home/Register" class="ub-item ub-login" id="newLoginBtn1"><span class="ub-txt">注册</span></a></li>
 <li class="ub-li ub-li-tequan"><a target="_blank" class="ub-item ub-tequan log-xsend" data-logxsend="[2, 200226]" href="http://cbg.baidu.com/?sc=1000021"><span class="ub-txt">意见反馈</span></a></li>
 </ul>
 </div>
@@ -117,8 +116,8 @@ d.set('recommend', '[{\x22title\x22:\x22\\u70ed\\u95e8\\u63a8\\u8350\x22,\x22rec
 <div class="read-nav-wp">
 <div class="read-nav-inner wrap-page-width">
 <ul class="read-nav clearfix">
-<li class="nav-li-index"><a class="nav-index" href="<{:U('index/index')}>"><span>首页</span></a><span class="nav-border"></span></li>
-<li class="nav-li-category"><a class="nav-category" href="<{:U('type/index')}>"><span>分类</span></a><span class="nav-border"></span></li>
+<li class="nav-li-index"><a class="nav-index" href=""><span>首页</span></a><span class="nav-border"></span></li>
+<li class="nav-li-category"><a class="nav-category" href="book/list/0?fr=indextop"><span>分类</span></a><span class="nav-border"></span></li>
 <li class="nav-li-rank"><a class="nav-rank" href="rank/newbook"><span>榜单</span></a><span class="nav-border"></span></li>
 </ul>
 </div>
@@ -129,8 +128,6 @@ d.set('recommend', '[{\x22title\x22:\x22\\u70ed\\u95e8\\u63a8\\u8350\x22,\x22rec
 </div>
 
 </div>
-</div>
-
 <div id="bd" class="bd">
 
 <div class="bd-wrap">
@@ -139,8 +136,7 @@ d.set('recommend', '[{\x22title\x22:\x22\\u70ed\\u95e8\\u63a8\\u8350\x22,\x22rec
 <div class="aside">
 </div>
 
-</block>
-<block name="main">
+
 <div class="main">
 
 <div class="mod yd-top-zone">
@@ -1438,7 +1434,6 @@ d.set('recommend', '[{\x22title\x22:\x22\\u70ed\\u95e8\\u63a8\\u8350\x22,\x22rec
 </div>
 
 </div>
-</block>
 <div id="ft">
 
 
@@ -1462,7 +1457,37 @@ Copyright<span class="cr">&nbsp;&copy;&nbsp;</span>河北百度多酷有限公�
 
 <div class="side-bar-wp"></div>
 
+<!-- 登录 start -->
+<!-- <dialog id="myDialog">
+<div id="login" style="display:none;">
+<div id="dialog-id-TANGRAM$6" class="yui-dialog dialog-has-button" style="position: absolute; top: 100px; left: 460.5px; display: block; z-index: 9003; visibility: visible; opacity: 1;">
+<a class="dialog-close"></a>
 
+<div class="dialog-title"></div>
+<div class="dialog-content">
+<div class="login-form-wrap">
+<form>
+<label for="fakename">用户名</label>
+<input id="fakename" placeholder="请输入用户名" type="text" name="username">
+<label for="fakepassword">密码</label>
+<input id="fakepassword" placeholder="请输入密码" type="password" name="password">
+</form>
+<p class="faketips"></p>
+</div>
+</div>
+<div class="dialog-button-pane">
+<button id="fakebutton" class="yui-btn yui-btn-green dialog-button">登录</button>
+</div>
+</div>
+<div id="Zuniqueid__6" class="dialog-mask" style="position: fixed; top: 0px; bottom: 0px; left: 0px; right: 0px; opacity: 0.4; background-color: rgb(0, 0, 0); display: block; z-index: 9002;"></div>
+</div>
+</dialog> --><!-- END -->
+<script>
+	// document.getElementById("login").style.display="";//显示
+	
+</script>
+
+<!-- 登录 end -->
 
 
 </body><script type="text/javascript" src="http://static.wenku.bdimg.com/static/spcommon/modjs/mod_21fbee4.js"></script>
